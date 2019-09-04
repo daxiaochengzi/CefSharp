@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.3.3578.1863\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.3.3578.1863\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.3.3578.1863\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.3.3578.1863\build\cef.redist.x64.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C043FFF7-5F71-4FFC-989A-E09E18548589}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BenDing</RootNamespace>
+    <AssemblyName>BenDing</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\code\cef\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C20E88025FA960EC7B5FF9D05BF4779BA4663106</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CefSharp.MinimalExample.WinForms_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowserForm.Designer.cs">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlExtensions.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Dto\BatchConfirmationDto.cs" />
+    <Compile Include="Model\Dto\BatchUnConfirmationDto.cs" />
+    <Compile Include="Model\Dto\CostPreSettlementDto.cs" />
+    <Compile Include="Model\Dto\CostSettlementDto.cs" />
+    <Compile Include="Model\Dto\CostSettlementQueryDto.cs" />
+    <Compile Include="Model\Dto\HospitalizationModifyDto.cs" />
+    <Compile Include="Model\Dto\HospitalizationRegisterDto.cs" />
+    <Compile Include="Model\Dto\HospitalizedSettlementCancelDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialCancelDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialChangeDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialReimbursementQueryDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialQueryDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialDiseasesDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialDiseasesQueryDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialDownloadDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialReimbursementAllDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialReimbursementAlllCancelDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialReimbursementDto.cs" />
+    <Compile Include="Model\Dto\IdentificationSpecialSettlementDto.cs" />
+    <Compile Include="Model\Dto\IniDto.cs" />
+    <Compile Include="Model\Dto\PrescriptionDeleteDto.cs" />
+    <Compile Include="Model\Dto\PrescriptionDetailQueryDto.cs" />
+    <Compile Include="Model\Dto\PrescriptionUploadDto.cs" />
+    <Compile Include="Model\Dto\ProjectDownloadDto.cs" />
+    <Compile Include="Model\Dto\Single\OutpatientConsultationFeeCancelDto.cs" />
+    <Compile Include="Model\Dto\Single\OutpatientConsultationFeeQueryDto.cs" />
+    <Compile Include="Model\Dto\Single\OutpatientConsultationFeeSettlementDto.cs" />
+    <Compile Include="Model\Dto\Single\SingleLeaveHospitalSettlementCancelDto.cs" />
+    <Compile Include="Model\Dto\Single\SingleLeaveHospitalSettlementDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePreMonthSettlementCancelDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePreMonthSettlementDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePrescriptionDetailQueryDto.cs" />
+    <Compile Include="Model\Dto\Single\SingleHospitalizationCancelDto.cs" />
+    <Compile Include="Model\Dto\Single\SingleHospitalizationModifyDto.cs" />
+    <Compile Include="Model\Dto\Single\SingleHospitalizationRegisterDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePrescriptionDeleteDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePrescriptionUploadDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePreSettlementDto.cs" />
+    <Compile Include="Model\Dto\Single\SinglePreSettlementQueryDto.cs" />
+    <Compile Include="Model\Dto\UserInfoDto.cs" />
+    <Compile Include="Model\HisBaseParam.cs" />
+    <Compile Include="Model\Params\Basiclevel\MedicalInsuranceDataAllBasiclevelDto.cs" />
+    <Compile Include="Model\Params\Basiclevel\Param\MedicalInsuranceDataAllBasiclevelParam.cs" />
+    <Compile Include="Model\Params\Basiclevel\QueryInpatientInfoBasicLevelDto.cs" />
+    <Compile Include="Model\Params\Basiclevel\QueryInpatientInfoBasicParam.cs" />
+    <Compile Include="Model\Params\BatchConfirmationParam.cs" />
+    <Compile Include="Model\Params\BatchUnConfirmationParam.cs" />
+    <Compile Include="Model\Params\CostPreSettlementParam.cs" />
+    <Compile Include="Model\Params\CostSettlementParam.cs" />
+    <Compile Include="Model\Params\CostSettlementQueryParam.cs" />
+    <Compile Include="Model\Params\ExecuteSpParam.cs" />
+    <Compile Include="Model\Params\HospitalizationModifyParam.cs" />
+    <Compile Include="Model\Params\HospitalizationRegisterParam.cs" />
+    <Compile Include="Model\Params\HospitalizedSettlementCancelParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialCancelParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialCancelQueryParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialChangParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialDiseasesCancelParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialDiseasesParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialDiseasesQueryParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialDownloadParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialReimbursementAlllCancelParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialReimbursementAllParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialReimbursementParam.cs" />
+    <Compile Include="Model\Params\IdentificationSpecialSettlementParam.cs" />
+    <Compile Include="Model\Params\PrescriptionDeleteParam.cs" />
+    <Compile Include="Model\Params\PrescriptionDetailQueryParam.cs" />
+    <Compile Include="Model\Params\PrescriptionUploadParam.cs" />
+    <Compile Include="Model\Params\ProjectDownloadParam.cs" />
+    <Compile Include="Model\Params\Service\SaveXmlDataServiceParam.cs" />
+    <Compile Include="Model\Params\Single\OutpatientConsultationFeeCancelParam.cs" />
+    <Compile Include="Model\Params\Single\OutpatientConsultationFeeQueryParam.cs" />
+    <Compile Include="Model\Params\Single\OutpatientConsultationFeeSettlementParam.cs" />
+    <Compile Include="Model\Params\Single\SingleLeaveHospitalSettlementCancelParam.cs" />
+    <Compile Include="Model\Params\Single\SingleLeaveHospitalSettlementParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePreMonthSettlementCancelParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePreMonthSettlementParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePrescriptionDetailQueryParam.cs" />
+    <Compile Include="Model\Params\Single\SingleHospitalizationCancelParam.cs" />
+    <Compile Include="Model\Params\Single\SingleHospitalizationModifyParam.cs" />
+    <Compile Include="Model\Params\Single\SingleHospitalizationRegisterParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePrescriptionDeleteParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePrescriptionUploadParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePreSettlementParam.cs" />
+    <Compile Include="Model\Params\Single\SinglePreSettlementQueryParam.cs" />
+    <Compile Include="Model\Params\UserInfoParam.cs" />
+    <Compile Include="Model\ResidentIni.cs" />
+    <Compile Include="Model\ResultData.cs" />
+    <Compile Include="Program.cs">
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Xml\ApiJsonResultData.cs" />
+    <Compile Include="Xml\HttpHelp.cs" />
+    <Compile Include="Service\ResidentMedicalInsurance.cs" />
+    <Compile Include="Service\ResidentMedicalInsuranceTest.cs" />
+    <Compile Include="Service\SingleResidentMedicalInsurance.cs" />
+    <Compile Include="Service\WorkersMedicalInsurance.cs" />
+    <Compile Include="TestClass.cs" />
+    <Compile Include="Xml\LogParam.cs" />
+    <Compile Include="Xml\Logs.cs" />
+    <Compile Include="Xml\ValidXmlDto.cs" />
+    <Compile Include="Xml\XmlHelp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BrowserForm.resx">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="CefSharp.MinimalExample.WinForms_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Resources\nav_left_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_plain_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_plain_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_right_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chromium-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.3578.1863\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.3578.1863\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.3578.1863\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.3578.1863\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.71.0.0\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.71.0.0\build\CefSharp.WinForms.targets')" />
+</Project>
