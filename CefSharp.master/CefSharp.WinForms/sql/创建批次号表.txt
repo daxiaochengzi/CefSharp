@@ -1,0 +1,40 @@
+
+create  table PrescriptionBatchNumber(
+[BatchId] [uniqueidentifier] NOT NULL,--批次id
+ BatchNumber nvarchar(50) NOT NULL,--批次号
+ HospitalizationNumber varchar(50) NOT NULL,--住院号
+ DetailId nvarchar(32) NOT NULL,--明细id
+ CreateCode nvarchar(50) NOT NULL,--创建人员编号
+ CreateTime [datetime] NOT NULL,--创建时间
+ DeleteCode  nvarchar(50) NOT NULL,--删除人员编号
+ [DeleteTime] [datetime] NULL,--删除时间
+)
+
+
+
+create  table MedicalInsuranceDataAll(
+ [DataAllId] nvarchar(32) NOT NULL,--id
+  ParticipationJson nvarchar(max) NOT NULL,--入参
+  ResultDataJson nvarchar(max) NOT NULL,--返回结果
+  DataType   nvarchar(50),--数据类型
+  DataId  nvarchar(50) ,--数据Id (HIS调用医保交易动作产生的唯一ID)
+  BusinessId  nvarchar(50) ,--数据Id 业务id
+  Remark  nvarchar(500) ,--备注
+  CreateUserId nvarchar(50)  NOT NULL,--操作人员
+  CreateTime [datetime] NOT NULL,--创建时间
+
+)
+
+CREATE TABLE [dbo].[MedicalInsuranceResidentInfo]( --医保病人信息
+	[DataAllId] [nvarchar](32) NOT NULL,
+	[ContentJson] [nvarchar](max) NOT NULL,
+	[DataType] [nvarchar](50) NULL,
+	[DataId] [nvarchar](50) NULL,
+	[BusinessId] [nvarchar](50) NULL,
+	 IDCard [nvarchar](50) NULL,
+	[CreateUserId] [nvarchar](50) NOT NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[DeleteTime] [datetime] NULL,
+	[OrgCode] [nvarchar](50) NULL,
+	[DeleteUserId] [nvarchar](50) NULL
+) 

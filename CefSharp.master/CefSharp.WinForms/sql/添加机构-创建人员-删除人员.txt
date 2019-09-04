@@ -1,0 +1,32 @@
+ALTER TABLE czyk ADD OrgCode nvarchar(50) --添加机构编码
+ALTER TABLE 基本信息 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 基本信息 ADD DeleteUserId nvarchar(50) --删除人员
+
+ALTER TABLE 门诊病人 ADD OrgCode nvarchar(50) --添加机构编码
+ALTER TABLE 门诊病人 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 门诊病人 ADD DeleteUserId nvarchar(50) --删除人员
+
+
+ALTER TABLE 门诊费用 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 门诊费用 ADD DeleteUserId nvarchar(50) --删除人员
+
+
+ALTER TABLE 三大目录 ADD CreateUserId nvarchar(50) --创建人员
+
+ALTER TABLE 医疗机构 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 医疗机构 ADD DeleteUserId nvarchar(50) --删除人员
+
+
+
+ALTER TABLE 住院病人 ADD OrgCode nvarchar(50) --添加机构编码
+ALTER TABLE 住院病人 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 住院病人 ADD DeleteUserId nvarchar(50) --删除人员
+
+
+ALTER TABLE 住院费用 ADD OrgCode nvarchar(50) --添加机构编码
+ALTER TABLE 住院费用 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 住院费用 ADD DeleteUserId nvarchar(50) --删除人员
+
+ALTER TABLE 住院医保信息 ADD OrgCode nvarchar(50) --添加机构编码
+ALTER TABLE 住院医保信息 ADD CreateUserId nvarchar(50) --创建人员
+ALTER TABLE 住院医保信息 ADD DeleteUserId nvarchar(50) --删除人员
