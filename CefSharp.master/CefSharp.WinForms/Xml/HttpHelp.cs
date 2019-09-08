@@ -45,9 +45,18 @@ namespace  BenDing.Xml
                 {
                     var resultData = JsonConvert.DeserializeObject<ApiJsonResultData>(result);
                     if (resultData.Success == false)
+                    {
                         throw new Exception(resultData.Message);
-                    resultEntiy = JsonConvert.DeserializeObject<T>(resultData.Data.ToString());
+                    }
+                    else
+                    {
+                        resultEntiy = JsonConvert.DeserializeObject<T>(typeof(T).FullName =="ApiJsonResultData" ? result : resultData.Data.ToString());
+                    }
                 }
+
+                    
+                   
+                
 
             }
             catch (Exception e)

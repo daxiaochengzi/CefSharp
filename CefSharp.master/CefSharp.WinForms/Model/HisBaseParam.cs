@@ -14,15 +14,15 @@ namespace BenDing.Model
         /// <summary>
         /// 医院ID
         /// </summary>
-        public Guid OrgID { get; set; }
+        public string OrgID { get; set; }
         /// <summary>
         /// 门诊或住院业务ID
         /// </summary>
-        public Guid BID { get; set; }
+        public string BID { get; set; }
         /// <summary>
         /// 操作人员ID
         /// </summary>
-        public Guid EmpID { get; set; }
+        public string EmpID { get; set; }
         /// <summary>
         /// 医保交易码
         /// </summary>
@@ -30,6 +30,6 @@ namespace BenDing.Model
         /// <summary>
         /// HIS调用医保交易动作产生的唯一ID
         /// </summary>
-        public Guid TransKey { get; set; }
+        public string TransKey { get; set; }
     }
 }
