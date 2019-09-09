@@ -18,6 +18,10 @@ namespace BenDing.Model.Params.Basiclevel.Param
       
         public string ContentJson { get; set; }
         /// <summary>
+        /// 返回数据
+        /// </summary>
+        public string ResultDatajson { get; set; }
+        /// <summary>
         /// 数据类型
         /// </summary>
         public string DataType { get; set; }

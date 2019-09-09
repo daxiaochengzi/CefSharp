@@ -39,17 +39,49 @@ namespace BenDing.Service
         /// 入院登记
         /// </summary>
         /// <returns></returns>
-        public string HospitalizationRegister()
+        public HospitalizationRegisterDto HospitalizationRegister(HospitalizationRegisterParam param)
         {
-            return "";
+            HospitalizationRegisterDto resultData = new HospitalizationRegisterDto();
+            // var Data = XmlHelp.DeSerializerModel(new IdentificationSpecialDownloadListDto());
+
+            var xmlStr = XmlHelp.SaveXml(param);
+            if (xmlStr)
+            {
+                int result = WorkersMedicalInsurance.CallService_cxjb("CXJB002");
+                if (result == 1)
+                {
+                    resultData = XmlHelp.DeSerializerModel(new HospitalizationRegisterDto());
+                }
+
+
+            }
+
+            return resultData;
+
+
         }
         /// <summary>
         /// 住院资料修改
         /// </summary>
         /// <returns></returns>
-        public string HospitalizationModify()
+        public HospitalizationModifyDto HospitalizationModify(HospitalizationModifyParam param)
         {
-            return "";
+            HospitalizationModifyDto resultData = new HospitalizationModifyDto();
+            // var Data = XmlHelp.DeSerializerModel(new IdentificationSpecialDownloadListDto());
+
+            var xmlStr = XmlHelp.SaveXml(param);
+            if (xmlStr)
+            {
+                int result = WorkersMedicalInsurance.CallService_cxjb("CXJB003");
+                if (result == 1)
+                {
+                    resultData = XmlHelp.DeSerializerModel(new HospitalizationModifyDto());
+                }
+
+            } //MedicalInsuranceResidentInfo
+
+            return resultData;
+
         }
         /// <summary>
         /// 处方上传

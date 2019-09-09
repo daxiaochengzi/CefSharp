@@ -16,7 +16,7 @@ namespace BenDing.Model.Params
         /// <summary>
         /// 入院日期
         /// </summary>
-        public string PPI_RYRQ { get; set; }
+        public string PI_RYRQ { get; set; }
         /// <summary>
         /// 入院主要诊断疾病ICD-10编码
         /// </summary>
@@ -47,10 +47,10 @@ namespace BenDing.Model.Params
         /// <summary>
         /// 胎儿数
         /// </summary>
-        public string PI_PI_TES { get; set; }
+        public string PI_TES { get; set; }
         /// <summary>
         /// 户口性质
         /// </summary>
-        public string PI_PI_HKXZ { get; set; }
+        public string PI_HKXZ { get; set; }
     }
 }

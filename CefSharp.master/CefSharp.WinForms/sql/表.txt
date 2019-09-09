@@ -1,3 +1,4 @@
 --[czy]  操作员表
 --[ksbmk]  科室编码
---[ysbmk]  科室编码
+-- fylb_2_ybsb    费用类别编码
+--fylb_3_ybsb   费用表

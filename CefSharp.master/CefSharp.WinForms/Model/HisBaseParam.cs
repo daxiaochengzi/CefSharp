@@ -31,5 +31,9 @@ namespace BenDing.Model
         /// HIS调用医保交易动作产生的唯一ID
         /// </summary>
         public string TransKey { get; set; }
+        /// <summary>
+        /// 个人医保编号
+        /// </summary>
+        public string EmpIDCode { get; set; }
     }
 }

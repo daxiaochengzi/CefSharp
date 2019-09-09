@@ -28,14 +28,15 @@ create  table MedicalInsuranceDataAll(
 CREATE TABLE [dbo].[MedicalInsuranceResidentInfo]( --医保病人信息
 	[DataAllId] [nvarchar](32) NOT NULL,--id
 	[ContentJson] [nvarchar](max) NOT NULL,--内容json
+	[ResultDataJson] [nvarchar](max) NOT NULL,--返回内容json
 	[DataType] [nvarchar](50) NULL,--数据类型
-	[DataId] [nvarchar](50) NULL,--数据id
+	[DataId] [nvarchar](50) NULL,--社保住院号，或者门诊号
 	[BusinessId] [nvarchar](50) NULL,--业务id
 	IDCard [nvarchar](50) NULL,--身份证
 	[OrgCode] [nvarchar](50) NULL,--组织机构
-	 MedicalInsuranceState int NULL,--医保状态
 	[CreateUserId] [nvarchar](50) NOT NULL,
 	[CreateTime] [datetime] NOT NULL,
+	[IsDelete] int NULL,
 	[DeleteTime] [datetime] NULL,
 	[DeleteUserId] [nvarchar](50) NULL
 ) 

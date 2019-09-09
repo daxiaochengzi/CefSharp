@@ -8,12 +8,21 @@ namespace BenDing.Model.Params.Web
 {
    public class PrescriptionUploadWebParam
     {/// <summary>
-    /// 明细id
+    /// 明细id(每次最多49条)
     /// </summary>
         public List<string> BusinessIdDetailList { get; set; }
         /// <summary>
-        /// 身份证号
+        /// 行数
         /// </summary>
-        public  string IdCard { get; set; }
+        public string RowNumber { get; set; }
+        /// <summary>
+        /// 住院号
+        /// </summary>
+        public string HospitalizationNumber { get; set; }
+        /// <summary>
+        /// 医保住院号
+        /// </summary>
+        public string PI_ZHY { get; set; }
+        
     }
 }

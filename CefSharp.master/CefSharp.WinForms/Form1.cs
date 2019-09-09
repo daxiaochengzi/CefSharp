@@ -56,19 +56,19 @@ namespace BenDing
 
 
             // Resident.GetUserInfo();
-            var hisbase = new HisBaseParam()
-            {
-                YbOrgCode = "123",
-                OrgID = Guid.NewGuid(),
-                BID = Guid.Empty,
-                EmpID = Guid.Parse("A2A4866484DC40F0A10FB7482603AABD"),
-                BsCode = "003",
-                TransKey = Guid.NewGuid(),
-            };
-            ResidentTest.HospitalizationRegister(new QueryInpatientInfoBasicParam()
-            {
-                IdCard = "510821198604156818",InstitutionalNumber = "51072600000000000000000513435964"
-            }, hisbase);
+            //var hisbase = new HisBaseParam()
+            //{
+            //    YbOrgCode = "123",
+            //    OrgID = Guid.NewGuid(),
+            //    BID = Guid.Empty,
+            //    EmpID = Guid.Parse("A2A4866484DC40F0A10FB7482603AABD"),
+            //    BsCode = "003",
+            //    TransKey = Guid.NewGuid(),
+            //};
+            //ResidentTest.HospitalizationRegister(new QueryInpatientInfoBasicParam()
+            //{
+            //    IdCard = "510821198604156818",InstitutionalNumber = "51072600000000000000000513435964"
+            //}, hisbase);
         }
 
         private void Form1_Load(object sender, EventArgs e)

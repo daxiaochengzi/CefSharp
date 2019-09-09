@@ -62,7 +62,8 @@ namespace BenDing.Service
                             EmpID= hisBase.EmpID,
                             OrgID= hisBase.OrgID,
                             BusinessId = hisBase.BID,
-                            ContentJson = Logs.ToJson(data),
+                            ContentJson = Logs.ToJson(residentInfoParam),
+                            ResultDatajson = Logs.ToJson(data),
                             DataAllId = Guid.NewGuid().ToString("N"),
                             DataId = hisBase.BID,
                             IdCard= data.PO_SFZH,
@@ -144,8 +145,78 @@ namespace BenDing.Service
                     {   //获取社保卡信息
                         if (saveDataAllQueryData.DataType == "003")
                         {//医保办理入院
-                         
 
+                            //1.2.2居民医保进行入院办理(HospitalizationRegister)   
+                            var dateTime = HttpHelp.HttpPost("",
+                                "GetServiceTime",
+                                new ApiJsonResultData());
+                            var RegisterParam = new HospitalizationRegisterParam()
+                            {
+                                PI_SFBZ = param.PI_SFBZ,
+                                PI_CRBZ = param.PI_CRBZ,
+                                PI_YLLB = param.PI_YLLB,
+                                PI_TES = param.PI_TES,
+                                PI_HKXZ = param.PI_HKXZ,
+                                PI_RYRQ = Convert.ToDateTime(result.入院日期).ToString("yyyyMMdd"),
+                                PI_ICD10 = result.入院主诊断ICD10,
+                                PI_ICD10_2 = result.入院次诊断ICD10,
+                                PI_RYZD = result.入院主诊断,
+                                PI_ZYBQ = result.入院科室,
+                                PI_CWH = result.入院床位,
+                                PI_YYZYH = Convert.ToDateTime(dateTime.Data).ToString("yyyyMMddHHmmss") + baseParam.OrgID.ToString().Substring(0, 6),
+                                PI_JBR = baseParam.EmpIDCode,
+                            };
+                            var RegisterData = Resident.HospitalizationRegister(RegisterParam);
+                            if (RegisterData.PO_FHZ == "1")
+                            {
+
+                                // 1.2.3 更新医保人员信息   
+
+                                var saveResidentInfoParam = new SaveMedicalInsuranceResidentInfoBasiclevelParam()
+                                {
+                                    YbOrgCode = baseParam.YbOrgCode,
+                                    BID = baseParam.YbOrgCode,
+                                    BsCode = baseParam.BsCode,
+                                    TransKey = baseParam.TransKey,
+                                    EmpID = baseParam.EmpID,
+                                    OrgID = baseParam.OrgID,
+                                    BusinessId = baseParam.BID,
+                                    ContentJson = Logs.ToJson(RegisterParam),
+                                    ResultDatajson = Logs.ToJson(RegisterData),
+                                    DataAllId = saveDataAllQueryData.DataAllId,
+                                    DataId = baseParam.BID,
+                                    DataType = baseParam.BsCode
+                                };
+                                var resultSaveData = HttpHelp.HttpPost(Logs.ToJson(residentInfoParam), "SaveMedicalInsuranceResidentInfo",
+                                    new ApiJsonResultData());
+
+                                //1.2.4医保信息回写至基层系统CXJB002
+                               
+                                var DataAllBasiclevelParam = new SaveXmlDataServiceParam()
+                                {
+                                    YbOrgCode = baseParam.YbOrgCode,
+                                    OrgID = baseParam.OrgID,
+                                    BID = baseParam.BID,
+                                    EmpID = baseParam.EmpID,
+                                    BsCode = baseParam.BsCode,
+                                    TransKey = baseParam.TransKey,
+                                    Participation = Logs.ToJson(RegisterParam),
+                                    ResultData = Logs.ToJson(RegisterData),
+                                    BusinessNumber = "CXJB002",
+                                };
+                                //CXJB001 存入基层
+                                var SaveDataAll = HttpHelp.HttpPost(Logs.ToJson(DataAllBasiclevelParam),
+                                    "SaveMedicalInsuranceDataAll",
+                                    new ApiJsonResultData());
+                                if (SaveDataAll.Success == false)
+                                {
+                                    throw new Exception(SaveDataAll.Message);
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception(RegisterData.PO_MSG);
+                            }
                         }
                         else
                         {
@@ -175,17 +246,121 @@ namespace BenDing.Service
 
             return resultData;
         }
+
+
+        public ApiJsonResultData HospitalizationModify(HospitalizationModifyWebParam param, HisBaseParam baseParam)
+        { var resultData = new ApiJsonResultData();
+
+            try
+            {
+                var result = HttpHelp.HttpPost(Logs.ToJson(param), "QueryInpatientInfo",
+                    new QueryInpatientInfoBasicLevelDto());
+
+                var RegisterParam = new HospitalizationModifyParam()
+                {
+                   
+                    PI_TES = param.PI_TES,
+                    PI_HKXZ = param.PI_HKXZ,
+                    PI_RYRQ = Convert.ToDateTime(result.入院日期).ToString("yyyyMMdd"),
+                    PI_ICD10 = result.入院主诊断ICD10,
+                    PI_ICD10_2 = result.入院次诊断ICD10,
+                    PI_RYZD = result.入院主诊断,
+                    PI_ZYBQ = result.入院科室,
+                    PI_CWH = result.入院床位,
+                    PI_ZHY = param.PI_ZYH,
+                    PI_YYZYH = param.PI_YYZYH,
+
+                };
+                //入院登记修改
+                var RegisterData = Resident.HospitalizationModify(RegisterParam);
+                if (RegisterData.PO_FHZ == "1")
+                {
+                    //1.2.3 医保信息回写至基层系统CXJB002
+                    var hisMedicalInsuranceId = Guid.NewGuid().ToString("N");
+                    var DataAllBasiclevelParam = new SaveXmlDataServiceParam()
+                    {
+                        YbOrgCode = baseParam.YbOrgCode,
+                        OrgID = baseParam.OrgID,
+                        BID = baseParam.BID,
+                        EmpID = baseParam.EmpID,
+                        BsCode = baseParam.BsCode,
+                        TransKey = baseParam.TransKey,
+                        Participation = Logs.ToJson(RegisterParam),
+                        ResultData = Logs.ToJson(RegisterData),
+                        BusinessNumber = "CXJB003",
+                    };
+                    //CXJB001 存入基层
+                    var SaveDataAll = HttpHelp.HttpPost(Logs.ToJson(DataAllBasiclevelParam),
+                        "SaveMedicalInsuranceDataAll",
+                        new ApiJsonResultData());
+                    if (SaveDataAll.Success == false)
+                    {
+                        throw new Exception(SaveDataAll.Message);
+                    }
+                }
+                else
+                {
+                   
+                    Logs.LogWrite(new LogParam()
+                    {
+                        Msg = RegisterData.PO_MSG,
+                        OperatorCode = baseParam.EmpID.ToString(),
+                        Params = Logs.ToJson(RegisterParam),
+                        ResultData = Logs.ToJson(RegisterData)
+
+                    });
+                    throw new Exception(RegisterData.PO_MSG);
+                }
+            }
+            catch (Exception e)
+            {
+                resultData.Success = false;
+                resultData.Message = e.Message;
+                
+            }
+
+            return resultData;
+
+
+        }
+    
         /// <summary>
         /// 处方上传
         /// </summary>
         /// <returns></returns>
         public ApiJsonResultData PrescriptionUpload(PrescriptionUploadWebParam param, HisBaseParam baseParam)
         {   //选择性上次
+            var resultData = new ApiJsonResultData();
+
             if (param.BusinessIdDetailList != null && param.BusinessIdDetailList.Any())
             {
+                var queryParam = new InpatientInfoDetailQueryBasiclevelParam();
+                queryParam.IdList = param.BusinessIdDetailList;
+
+                var resultSaveData = HttpHelp.HttpPost(Logs.ToJson(queryParam), "InpatientInfoDetailQuery",
+                    new List<OutpatientDetailQueryBasiclevelDto>());
+                if (resultSaveData.Any())
+                {
+                    var uploadData = resultSaveData.OrderBy(c => c.Id).ToList();
+
+                    var uploadParam = new PrescriptionUploadParam();
+                    uploadParam.PI_ZHY = param.PI_ZHY;
+                    uploadParam.PI_JBR = baseParam.EmpIDCode;
+                    uploadParam.CFMX = uploadData.Select(c => new PrescriptionUploadCFMX()
+                    {
+
+                    }).ToList();
+
+                }
+
             }
 
-            return new ApiJsonResultData();
+            return resultData;
         }
+
+        //private List<string> CheckSuccessData(string Id, List<OutpatientDetailQueryBasiclevelDto>dataList)
+        //{
+
+        //}
     }
 }

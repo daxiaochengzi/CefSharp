@@ -153,7 +153,9 @@
     <Compile Include="Model\Dto\UserInfoDto.cs" />
     <Compile Include="Model\HisBaseParam.cs" />
     <Compile Include="Model\Params\Basiclevel\Dto\MedicalInsuranceResidentInfoBasiclevelDto.cs" />
+    <Compile Include="Model\Params\Basiclevel\Dto\OutpatientDetailQueryBasiclevelDto.cs" />
     <Compile Include="Model\Params\Basiclevel\MedicalInsuranceDataAllBasiclevelDto.cs" />
+    <Compile Include="Model\Params\Basiclevel\Param\InpatientInfoDetailQueryBasiclevelParam.cs" />
     <Compile Include="Model\Params\Basiclevel\Param\MedicalInsuranceDataAllBasiclevelParam.cs" />
     <Compile Include="Model\Params\Basiclevel\Param\SaveMedicalInsuranceResidentInfoBasiclevelParam.cs" />
     <Compile Include="Model\Params\Basiclevel\QueryInpatientInfoBasicLevelDto.cs" />
@@ -200,6 +202,7 @@
     <Compile Include="Model\Params\Single\SinglePreSettlementParam.cs" />
     <Compile Include="Model\Params\Single\SinglePreSettlementQueryParam.cs" />
     <Compile Include="Model\Params\UserInfoParam.cs" />
+    <Compile Include="Model\Params\Web\HospitalizationModifyWebParam.cs" />
     <Compile Include="Model\Params\Web\PrescriptionUploadWebParam.cs" />
     <Compile Include="Model\ResidentIni.cs" />
     <Compile Include="Model\ResultData.cs" />
