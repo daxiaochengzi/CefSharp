@@ -37,7 +37,7 @@ namespace BenDing
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
             var browser = new BrowserForm();
-            Application.Run(new  Form1());
+            Application.Run(browser);
         }
     }
 }

@@ -347,8 +347,9 @@ namespace BenDing.Service
                     uploadParam.PI_ZHY = param.PI_ZHY;
                     uploadParam.PI_JBR = baseParam.EmpIDCode;
                     uploadParam.CFMX = uploadData.Select(c => new PrescriptionUploadCFMX()
-                    {
-
+                    {  CO="0",
+                       AKA072="0",
+                       AKC229="0"
                     }).ToList();
 
                 }
